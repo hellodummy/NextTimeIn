@@ -1,0 +1,3 @@
+<% content_tag_for :li, task do %>
+	<%=h task.name %> <%= link_to "(x)", task, :controller => "tasks", :action => :destroy, :method => :delete %>
+<% end -%>

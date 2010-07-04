@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  completed: false
+  location_id: 1
+
+two:
+  name: MyString
+  completed: false
+  location_id: 1
