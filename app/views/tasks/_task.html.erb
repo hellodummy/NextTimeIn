@@ -1,3 +1,9 @@
 <% content_tag_for :li, task do %>
-	<%=h task.name %> <%= link_to "(x)", task, :controller => "tasks", :action => :destroy, :method => :delete %>
+	<%=h task.name %> 
+	<%= link_to "(x)", task, :controller => "tasks", :action => :destroy, :method => :delete %>
+	<% if !task.completed? -%>
+		(<%= link_to "complete", :controller => "tasks", :action => :complete, :id => task %>)
+	<% else %>
+		(<%= link_to "re-open", :controller => "tasks", :action => :uncomplete, :id => task %>)
+	<% end -%>
 <% end -%>

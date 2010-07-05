@@ -4,13 +4,15 @@
 
 <hr />
 <h2>Tasks</h2>
-<ul>
-	<% if @location.tasks.empty? -%>
-		<i>No tasks in the queue.</i>
-	<% else -%>
-		<%= render :partial => @location.tasks %>
-	<% end -%>
-</ul>
+<% if @location.tasks.empty? -%>
+	<i>No tasks in the queue.</i>
+<% else -%>
+	<h3>Incomplete Tasks</h3>
+		<ul><%= render :partial => @location.tasks.reject(&:completed?).sort_by(&:updated_at) %></ul>
+	<h3>Completed Tasks</h3>
+		<ul><%= render :partial => @location.tasks.select(&:completed?).sort_by(&:updated_at) %></ul>
+<% end -%>
+
 
 <div id="Tasks">
 <% form_for [@location, Task.new] do |f| -%>
