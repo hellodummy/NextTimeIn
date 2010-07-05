@@ -9,6 +9,20 @@ class TasksController < ApplicationController
     redirect_to @location
   end
 
+  def update 
+    @task = Task.find(params[:id])
+    if @task.completed 
+      @task.completed = false
+    else
+      @task.completed = true
+    end
+    @task.save
+    
+    @location = Location.find(@task.location_id)
+    redirect_to @location
+    
+  end
+
   def destroy
     @task = Task.find(params[:id])
     @location = Location.find(@task.location_id)
@@ -19,26 +33,6 @@ class TasksController < ApplicationController
   
   def show
     @task = Task.find(params[:id])
-    @location = Location.find(@task.location_id)
-    
-    redirect_to @location
-  end
-  
-  def complete
-    @task = Task.find(params[:id])
-    @task.completed = true
-    @task.save
-    
-    @location = Location.find(@task.location_id)
-    
-    redirect_to @location
-  end
-  
-  def uncomplete
-    @task = Task.find(params[:id])
-    @task.completed = false
-    @task.save
-    
     @location = Location.find(@task.location_id)
     
     redirect_to @location

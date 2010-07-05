@@ -2,8 +2,8 @@
 	<%=h task.name %> 
 	<%= link_to "(x)", task, :controller => "tasks", :action => :destroy, :method => :delete %>
 	<% if !task.completed? -%>
-		(<%= link_to "complete", :controller => "tasks", :action => :complete, :id => task %>)
+		(<%= link_to "complete", task_path(task), :method => :put %>)
 	<% else %>
-		(<%= link_to "re-open", :controller => "tasks", :action => :uncomplete, :id => task %>)
+		(<%= link_to "re-open", task_path(task), :method => :put %>)
 	<% end -%>
 <% end -%>
