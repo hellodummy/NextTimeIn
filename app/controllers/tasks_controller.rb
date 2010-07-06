@@ -13,14 +13,16 @@ class TasksController < ApplicationController
     redirect_to @location
   end
 
-  def update 
+  def update
+    debugger 
     @task = Task.find(params[:id])
-    @task.completed = !@task.completed #TODO: Fix this behavior. Use params. Figure out how to use params.
-    @task.save
-    
     @location = Location.find(@task.location_id)
-    redirect_to @location
     
+    if @task.update_attributes(params[:task])
+      redirect_to(@location, :notice => 'Location was successfully updated.')
+    else
+      render :action => "edit" 
+    end    
   end
 
   def destroy
