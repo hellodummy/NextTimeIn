@@ -1,9 +1,10 @@
 <% content_tag_for :li, task do %>
-	<%=h task.name %> 
-	<%= link_to "(x)", task, :controller => "tasks", :action => :destroy, :method => :delete %>
+	<%= link_to h(task.name), task_path(task) %> 
 	<% if !task.completed? -%>
 		(<%= link_to "complete", task_path(task), :method => :put %>)
 	<% else %>
 		(<%= link_to "re-open", task_path(task), :method => :put %>)
 	<% end -%>
+	<%= link_to "(x)", task, :controller => "tasks", :action => :destroy, :method => :delete, :confirm => "Delete for sure?" %>
+	
 <% end -%>

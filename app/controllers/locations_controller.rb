@@ -73,7 +73,10 @@ class LocationsController < ApplicationController
   # DELETE /locations/1.xml
   def destroy
     @location = Location.find(params[:id])
+    name = @location.name
     @location.destroy
+    
+    flash[:notice] = "#{name} was successfully deleted"
 
     respond_to do |format|
       format.html { redirect_to(locations_url) }

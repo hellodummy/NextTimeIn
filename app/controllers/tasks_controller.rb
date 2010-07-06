@@ -1,4 +1,8 @@
 class TasksController < ApplicationController
+  def index
+    @tasks = Task.all
+  end
+
   def create
     @location = Location.find(params[:location_id])
     @task = @location.tasks.create!(params[:task])
@@ -11,11 +15,7 @@ class TasksController < ApplicationController
 
   def update 
     @task = Task.find(params[:id])
-    if @task.completed 
-      @task.completed = false
-    else
-      @task.completed = true
-    end
+    @task.completed = !@task.completed #TODO: Fix this behavior. Use params. Figure out how to use params.
     @task.save
     
     @location = Location.find(@task.location_id)
@@ -32,10 +32,11 @@ class TasksController < ApplicationController
   end
   
   def show
+    @task = Task.find(params[:id])    
+  end
+  
+  def edit
     @task = Task.find(params[:id])
-    @location = Location.find(@task.location_id)
-    
-    redirect_to @location
   end
     
   def completed?

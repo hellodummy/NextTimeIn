@@ -1,5 +1,5 @@
 <h1>Location: <%=h @location.name %></h1>
-<%= link_to 'Edit Location Name', edit_location_path(@location) %> |
+<%= link_to 'Edit this Location', edit_location_path(@location) %> |
 <%= link_to 'Back to all Locations', locations_path %>
 
 <hr />
@@ -13,11 +13,9 @@
 		<ul><%= render :partial => @location.tasks.select(&:completed?).sort_by(&:updated_at) %></ul>
 <% end -%>
 
-
-<div id="Tasks">
+<h3>New Task:</h3>
 <% form_for [@location, Task.new] do |f| -%>
 	<%= f.text_field :name %>
 	<%= f.submit "Add", :method => :create %>
 <% end -%>	
-</div>
 

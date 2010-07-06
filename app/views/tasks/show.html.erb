@@ -1,16 +1,13 @@
-<p>
-  <b>Name:</b>
-  <%=h @task.name %>
-</p>
+<h1><%=h @task.name %></h1>
 
 <p>
   <b>Completed:</b>
-  <%=h @task.completed %>
+  <%= @task.completed ? "Yes" : "No" %>
 </p>
 
 <p>
   <b>Location:</b>
-  <%=h @task.location_id %>
+  <%=h @task.location.name %>
 </p>
 
 

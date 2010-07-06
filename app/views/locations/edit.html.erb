@@ -13,4 +13,5 @@
 <% end %>
 
 <%= link_to 'Show', @location %> |
+<%= link_to "Destroy", @location, :action => "destroy", :method => :delete, :confirm => "You sure you want to delete?" %> | 
 <%= link_to 'Back', locations_path %>
