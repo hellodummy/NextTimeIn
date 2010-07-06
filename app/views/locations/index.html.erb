@@ -3,11 +3,14 @@
 <table>
   <tr>
     <th>Name</th>
+	<th>Tasks<br />
+		(Done, !Done)</th>
   </tr>
 
 <% @locations.each do |location| %>
   <tr>
     <td><%= link_to location.name, location %></td>
+	<td style="text-align:center;"><%= location.tasks.select(&:completed).length %>, <%= location.tasks.reject(&:completed).length %></td>
   </tr>
 <% end %>
 </table>
