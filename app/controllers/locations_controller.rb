@@ -1,4 +1,6 @@
 class LocationsController < ApplicationController
+  before_filter :load_location, :only => [ :show, :edit, :update, :destroy ]
+  
   # GET /locations
   # GET /locations.xml
   def index
@@ -13,8 +15,6 @@ class LocationsController < ApplicationController
   # GET /locations/1
   # GET /locations/1.xml
   def show
-    @location = Location.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @location }
@@ -34,7 +34,6 @@ class LocationsController < ApplicationController
 
   # GET /locations/1/edit
   def edit
-    @location = Location.find(params[:id])
   end
 
   # POST /locations
@@ -56,8 +55,6 @@ class LocationsController < ApplicationController
   # PUT /locations/1
   # PUT /locations/1.xml
   def update
-    @location = Location.find(params[:id])
-
     respond_to do |format|
       if @location.update_attributes(params[:location])
         format.html { redirect_to(@location, :notice => 'Location was successfully updated.') }
@@ -72,7 +69,6 @@ class LocationsController < ApplicationController
   # DELETE /locations/1
   # DELETE /locations/1.xml
   def destroy
-    @location = Location.find(params[:id])
     name = @location.name
     @location.destroy
     
@@ -82,5 +78,11 @@ class LocationsController < ApplicationController
       format.html { redirect_to(locations_url) }
       format.xml  { head :ok }
     end
+  end
+  
+  private
+  
+  def load_location
+    @location = Location.find(params[:id])
   end
 end
