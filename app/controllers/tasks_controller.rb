@@ -1,4 +1,6 @@
 class TasksController < ApplicationController
+  before_filter :load_location, :only => [ :show, :edit, :update, :destroy ]
+  
   def index
     @tasks = Task.all
   end
@@ -43,10 +45,5 @@ class TasksController < ApplicationController
   def new
     @task = Task.new
   end
-    
-  def completed?
-    self.completed
-  end
-
   
 end
