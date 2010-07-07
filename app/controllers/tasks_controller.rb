@@ -18,7 +18,7 @@ class TasksController < ApplicationController
     @location = Location.find(@task.location_id)
     
     if @task.update_attributes(params[:task])
-      redirect_to(@location, :notice => 'Location was successfully updated.')
+      redirect_to(@location, :notice => "Task '#{@task.name}' was successfully updated.")
     else
       render :action => "edit" 
     end    
