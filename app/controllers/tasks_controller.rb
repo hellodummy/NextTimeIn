@@ -13,8 +13,7 @@ class TasksController < ApplicationController
     redirect_to @location
   end
 
-  def update
-    debugger 
+  def update 
     @task = Task.find(params[:id])
     @location = Location.find(@task.location_id)
     

@@ -1,9 +1,9 @@
 <% content_tag_for :li, task do %>
 	<%= link_to h(task.name), task_path(task) %> 
 	<% if !task.completed? -%>
-		(<%= link_to "complete", task, :method => :put, task[:completed] => :true %>) <!-- Help me out here... -->
+		(<%= link_to "complete", task_path(task, :task => {:completed => :true}), :method => :put %>)
 	<% else %>
-		(<%= link_to "re-open", task, :method => :put %>)
+		(<%= link_to "re-open", task_path(task, :task => {:completed => :false}), :method => :put %>)
 	<% end -%>
 	<%= link_to "(x)", task, :controller => "tasks", :action => :destroy, :method => :delete, :confirm => "Delete for sure?" %>
 	
