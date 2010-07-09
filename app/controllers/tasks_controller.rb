@@ -7,7 +7,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    @location = Location.find(params[:location_id])
+    @location = Location.find_by_name(params[:location_id])
     @task = @location.tasks.create!(params[:task])
     
     @task.save

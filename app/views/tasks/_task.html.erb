@@ -1,10 +1,10 @@
 <% content_tag_for :li, task do %>
-	<%= link_to h(task.name), task_path(task) %> 
+	<%= link_to h(task.name), location_task_path(task.location, task) %> 
 	<% if !task.completed? -%>
-		(<%= link_to "complete", task_path(task, :task => {:completed => :true}), :method => :put %>)
+		(<%= link_to "complete", location_task_path(task.location, task, :task => {:completed => :true}), :method => :put %>)
 	<% else %>
-		(<%= link_to "re-open", task_path(task, :task => {:completed => :false}), :method => :put %>)
+		(<%= link_to "re-open", location_task_path(task.location, task, :task => {:completed => :false}), :method => :put %>)
 	<% end -%>
-	<%= link_to "(x)", task, :controller => "tasks", :action => :destroy, :method => :delete, :confirm => "Delete for sure?" %>
+	<%= link_to "(x)", location_task_path(task.location, task), :controller => "tasks", :action => :destroy, :method => :delete, :confirm => "Delete for sure?" %>
 	
 <% end -%>

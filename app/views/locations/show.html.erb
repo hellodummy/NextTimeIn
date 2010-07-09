@@ -8,9 +8,9 @@
 	<i>No tasks in the queue.</i>
 <% else -%>
 	<h3>Incomplete Tasks</h3>
-		<ul><%= render :partial => @location.tasks.reject(&:completed?).sort_by(&:updated_at) %></ul>
+		<ul><%= render @location.tasks.reject(&:completed?).sort_by(&:updated_at) %></ul>
 	<h3>Completed Tasks</h3>
-		<ul><%= render :partial => @location.tasks.select(&:completed?).sort_by(&:updated_at) %></ul>
+		<ul><%= render @location.tasks.select(&:completed?).sort_by(&:updated_at) %></ul>
 <% end -%>
 
 <h3>New Task:</h3>
