@@ -83,6 +83,6 @@ class LocationsController < ApplicationController
   private
   
   def load_location
-    @location = Location.find(params[:id])
+    @location = Location.find_by_name(params[:id])
   end
 end

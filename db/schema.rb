@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100704042211) do
+ActiveRecord::Schema.define(:version => 20100708072458) do
 
   create_table "locations", :force => true do |t|
     t.string   "name"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(:version => 20100704042211) do
 
   create_table "tasks", :force => true do |t|
     t.string   "name"
-    t.boolean  "completed"
+    t.boolean  "completed",   :default => false
     t.integer  "location_id"
     t.datetime "created_at"
     t.datetime "updated_at"

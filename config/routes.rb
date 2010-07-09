@@ -1,5 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :tasks
+  map.resources :tasks # TODO: make this a nested route
   map.resources :locations, :has_many => :tasks
 
   # The priority is based upon order of creation: first created -> highest priority.
