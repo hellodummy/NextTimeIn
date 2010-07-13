@@ -1,1 +1,2 @@
+rails --version 2.3.8
 friendly_id --version 3.0.6
