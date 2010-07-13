@@ -1,4 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
+  map.devise_for :users
 
   # TODO: Get rid of the 'locations' in the url. The url should read, in your head, "the next time in Block Island" or some shit like that.
   # map.content '/:id', :controller => :locations, :action => :show   # TODO: Reduce Routes in URLs
