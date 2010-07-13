@@ -1,8 +1,7 @@
 class LocationsController < ApplicationController
   before_filter :load_location, :only => [ :show, :edit, :update, :destroy ]
+  before_filter :authenticate_user!
   
-  # GET /locations
-  # GET /locations.xml
   def index
     @locations = Location.all
 
@@ -12,8 +11,6 @@ class LocationsController < ApplicationController
     end
   end
 
-  # GET /locations/1
-  # GET /locations/1.xml
   def show
     respond_to do |format|
       format.html # show.html.erb
@@ -21,8 +18,6 @@ class LocationsController < ApplicationController
     end
   end
 
-  # GET /locations/new
-  # GET /locations/new.xml
   def new
     @location = Location.new
 
@@ -32,12 +27,9 @@ class LocationsController < ApplicationController
     end
   end
 
-  # GET /locations/1/edit
   def edit
   end
 
-  # POST /locations
-  # POST /locations.xml
   def create
     @location = Location.new(params[:location])
 
@@ -52,8 +44,6 @@ class LocationsController < ApplicationController
     end
   end
 
-  # PUT /locations/1
-  # PUT /locations/1.xml
   def update
     respond_to do |format|
       if @location.update_attributes(params[:location])
@@ -66,8 +56,6 @@ class LocationsController < ApplicationController
     end
   end
 
-  # DELETE /locations/1
-  # DELETE /locations/1.xml
   def destroy
     name = @location.name
     @location.destroy
