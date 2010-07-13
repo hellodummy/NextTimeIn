@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <title><%= "#{controller.controller_name}: #{controller.action_name}" %></title>
+  <title><%= yield :title %> <%= "#{controller.controller_name}: #{controller.action_name}" %></title>
   <%= stylesheet_link_tag 'nexttimein' %>
 </head>
 <body>
@@ -15,8 +15,12 @@
 <div id="header">
 	<h1 id="site-title"><%= link_to "NextTime.in", root_path %></h1>
 	<div id="navigation">
-		Hello
-	</div>
+		Navigation: 
+			<%= link_to "Home", root_path %> &bull; 
+			<%= link_to "Locations", locations_path	 %> &bull; 
+			<%= link_to "About", :controller => "pages", :action => "show", :permalink => "about" %> &bull; 
+			<%= link_to "Contact", :controller => "pages", :action => "show", :permalink => "contact" %>
+</div>
 	<div id="userpanel">
 		<% if user_signed_in? %>
 			Hi, <strong><%= current_user.email %></strong>. (<%= link_to "Not you?", destroy_user_session_path %>)
@@ -27,7 +31,10 @@
 </div>
 
 
+
+
 <div id="content">
+<hr />
 
 	<%= yield %>
 	
