@@ -5,9 +5,9 @@ class PagesController < ApplicationController
   def show
     if (params[:permalink])
       @page = Page.find_by_permalink(params[:permalink])
-    else  
+    else  # TODO: elsif here for other things
       @page = Page.find(params[:id])
-    end
+    end 
 
   end
 
