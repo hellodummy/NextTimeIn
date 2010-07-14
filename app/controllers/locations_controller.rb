@@ -63,6 +63,6 @@ class LocationsController < ApplicationController
   private
   
   def load_location
-    @location = current_user.locations.find(params[:id])
+    @location = current_user.locations.find(params[:id], :scope  => current_user)
   end
 end
