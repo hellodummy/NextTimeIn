@@ -58,8 +58,15 @@ h1#site-title {
 	font: 2.0em "Lucida Grande", Lucida, sans-serif; 
 	color: #222;
 }
+#site-title {
+	float: left;
+	padding: 0em 0 0 0;
+	margin: 0;
+}
 #navigation {
 	float: left;
+	padding: 0.9em 0 0 .7em;
+	margin: 0;
 }
 
 #userpanel {

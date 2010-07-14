@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  before_filter :authenticate_user!, :except => :show
 
 
   def show
@@ -11,7 +12,8 @@ class PagesController < ApplicationController
   end
 
   def edit
-    @page = Page.find(params[:id])
+   # @page = Page.find(params[:id])
+    redirect_to page_path
   end
 
 end

@@ -13,10 +13,10 @@
 </div>
 
 <div id="header">
-	<h1 id="site-title"><%= link_to "nexttime.in", root_path %></h1>
+	<div id="title-div">
+		<h1 id="site-title"><%= link_to "nexttime.in", root_path %> /</h1>		
+	</div>
 	<div id="navigation">
-		Navigation: 
-			<%= link_to "Home", root_path %> &bull; 
 			<%= link_to "Locations", locations_path	 %> &bull; 
 			<%= link_to "About", :controller => "pages", :action => "show", :permalink => "about" %> &bull; 
 			<%= link_to "Contact", :controller => "pages", :action => "show", :permalink => "contact" %>
@@ -34,7 +34,6 @@
 
 
 <div id="content">
-<hr />
 
 	<%= yield %>
 	
