@@ -10,7 +10,7 @@ Rails::Initializer.run do |config|
   
   config.gem 'friendly_id'
   config.gem 'devise'
-  config.gem 'redcloth'
+  config.gem 'RedCloth'
   
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
