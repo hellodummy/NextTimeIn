@@ -8,11 +8,15 @@ class TasksController < ApplicationController
 
   def create
     @location = Location.find(params[:location_id], :scope => current_user)
-    @task = @location.tasks.create!(params[:task])
+    @task = @location.tasks.build(params[:task])
     
-    @task.save
-    
-    redirect_to @location
+    respond_to do |format|   
+      if @task.save
+         format.html { redirect_to(@location, :notice => 'Task was successfully created.') }
+      else
+         format.html { render :action => "new" }
+      end     
+    end
   end
 
   def update 
@@ -46,6 +50,6 @@ class TasksController < ApplicationController
   end
   
   def load_task_location
-    @location = Location.find(@task.location_id, :scope => current_user )
+    @location = current_user.locations.find(@task.location_id)
   end
 end

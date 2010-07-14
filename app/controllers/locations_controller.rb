@@ -3,7 +3,7 @@ class LocationsController < ApplicationController
   before_filter :authenticate_user!
   
   def index
-    @locations = Location.find(:all, :conditions => { :user_id => current_user } )
+    @locations = current_user.locations
 
     respond_to do |format|
       format.html # index.html.erb
@@ -28,8 +28,7 @@ class LocationsController < ApplicationController
   end
 
   def create
-    @location = Location.new(params[:location])
-    @location.user_id = current_user.id
+    @location = current_user.locations.build(params[:location])
 
     respond_to do |format|
       if @location.save
@@ -64,6 +63,6 @@ class LocationsController < ApplicationController
   private
   
   def load_location
-    @location = Location.find(params[:id], :conditions => { :user_id => current_user } )
+    @location = current_user.locations.find(params[:id])
   end
 end

@@ -7,6 +7,6 @@ class User < ActiveRecord::Base
   has_many :locations
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation
+  attr_accessible :email, :password
   
 end
