@@ -7,7 +7,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    @location = Location.find(params[:location_id])
+    @location = Location.find(params[:location_id], :scope => current_user)
     @task = @location.tasks.create!(params[:task])
     
     @task.save
@@ -46,6 +46,6 @@ class TasksController < ApplicationController
   end
   
   def load_task_location
-    @location = Location.find(@task.location_id)
+    @location = Location.find(@task.location_id, :scope => current_user )
   end
 end

@@ -3,18 +3,16 @@ class LocationsController < ApplicationController
   before_filter :authenticate_user!
   
   def index
-    @locations = Location.all
+    @locations = Location.find(:all, :conditions => { :user_id => current_user } )
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @locations }
     end
   end
 
   def show
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @location }
     end
   end
 
@@ -23,7 +21,6 @@ class LocationsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @location }
     end
   end
 
@@ -32,14 +29,13 @@ class LocationsController < ApplicationController
 
   def create
     @location = Location.new(params[:location])
+    @location.user_id = current_user.id
 
     respond_to do |format|
       if @location.save
         format.html { redirect_to(@location, :notice => 'Location was successfully created.') }
-        format.xml  { render :xml => @location, :status => :created, :location => @location }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @location.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -48,10 +44,8 @@ class LocationsController < ApplicationController
     respond_to do |format|
       if @location.update_attributes(params[:location])
         format.html { redirect_to(@location, :notice => 'Location was successfully updated.') }
-        format.xml  { head :ok }
-      else
+       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @location.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -64,13 +58,12 @@ class LocationsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to(locations_url) }
-      format.xml  { head :ok }
     end
   end
   
   private
   
   def load_location
-    @location = Location.find(params[:id])
+    @location = Location.find(params[:id], :conditions => { :user_id => current_user } )
   end
 end

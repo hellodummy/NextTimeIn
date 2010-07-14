@@ -9,12 +9,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100713212920) do
+ActiveRecord::Schema.define(:version => 20100714014601) do
 
   create_table "locations", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
+    t.string   "cached_slug"
   end
 
   create_table "pages", :force => true do |t|
@@ -43,7 +45,6 @@ ActiveRecord::Schema.define(:version => 20100713212920) do
     t.integer  "location_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "cached_slug"
   end
 
   create_table "users", :force => true do |t|
