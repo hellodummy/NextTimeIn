@@ -11,6 +11,19 @@ class PagesController < ApplicationController
 
   end
 
+  # def update 
+  #  
+  #    @page = Page.find(params[:id])
+  #    respond_to do |format|
+  #      if @page.update_attributes(params[:page])
+  #        format.html { redirect_to(@page, :notice => 'Page successfully updated.') }
+  #       else
+  #        format.html { render :action => "edit" }
+  #      end
+  #    end
+  #    
+  #  end
+ 
   def edit
    # @page = Page.find(params[:id])
     redirect_to page_path
