@@ -1,5 +1,21 @@
-<h1>New task</h1>
+<% title "New Task"%>
 
-<%= render 'form' %>
+<h1><%= yield :title %></h1>
 
-<%= link_to 'Back', tasks_path %>
+<% form_for [@task.location, @task] do |f| %>
+	<%= f.error_messages %>
+	<p>
+    	<%= f.label :name %><br />
+	    <%= f.text_field :name %>
+	</p>
+
+	<p>
+		<%= collection_select @task.location, :location_id, current_user.locations, :id, :name %>
+	</p>
+
+  <p>
+    <%= f.submit 'Create', :method => :create %> <!-- This doesn't work because it doesn't save the task to a location. Use a different form builder. Next time -->
+  </p>
+<% end %>
+
+<%= link_to 'Home', root_path %>

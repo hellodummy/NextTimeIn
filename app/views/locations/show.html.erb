@@ -1,6 +1,6 @@
 <% title @location.name %>
 
-<h1>Location: <%=h @location.name %></h1>
+<h1>Location: <%=h yield :title %></h1>
 <%= link_to 'Edit this Location', edit_location_path(@location) %> |
 <%= link_to 'Back to all Locations', locations_path %>
 

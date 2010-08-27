@@ -9,8 +9,12 @@ ActionController::Routing::Routes.draw do |map|
     locations.resources :tasks
   end
 
+  # map.resources :tasks # required for naked task adding without predetermined scope
 
   map.root :controller => :pages, :action => :show, :permalink => "welcome"
+  
+  map.newtask 'new', :controller => :tasks, :action => :new
+  
   
   map.resources :pages
   map.static ':permalink', :controller => :pages, :action => :show
